@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Webkul\Customer\Models\Customer;
 use Webkul\Customer\Http\Listeners\CustomerEventsHandler;
+use Laravel\Socialite\Facades\Socialite;
 use Cart;
 use Cookie;
 
@@ -27,7 +28,7 @@ class SessionController extends Controller
 
     public function __construct()
     {
-        $this->middleware('customer')->except(['show','create']);
+        $this->middleware('customer')->except(['show','create', 'redirectToProvider', 'handleProviderCallback']);
         $this->_config = request('_config');
 
         $subscriber = new CustomerEventsHandler;
@@ -90,5 +91,22 @@ class SessionController extends Controller
         Event::fire('customer.after.logout', $id);
 
         return redirect()->route($this->_config['redirect']);
+    }
+
+    /**
+    * Redirect the user to the Google authentication page.
+    *
+    *@return \Illuminate\Http\Response
+    */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        return $user->token;
     }
 }

@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+        'client_id' => '557508523467-jt142tcs4tmd07hg2l7nb96rtcgdd5d0.apps.googleusercontent.com',
+        'client_secret' => 'ijjiM4wyZ6ZHrVgOpX_gvn5p',
+        'redirect' => 'http://localhost/191/bagisto/public/callback',
+    ]
 ];

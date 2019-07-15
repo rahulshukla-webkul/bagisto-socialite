@@ -244,7 +244,10 @@ return [
         Webkul\Sales\Providers\SalesServiceProvider::class,
         Webkul\Tax\Providers\TaxServiceProvider::class,
         Webkul\API\Providers\APIServiceProvider::class,
-        Webkul\Discount\Providers\DiscountServiceProvider::class
+        Webkul\Discount\Providers\DiscountServiceProvider::class,
+
+
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -303,5 +306,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Concord' => Konekt\Concord\Facades\Concord::class,
         'Helper'  => Konekt\Concord\Facades\Helper::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 ];

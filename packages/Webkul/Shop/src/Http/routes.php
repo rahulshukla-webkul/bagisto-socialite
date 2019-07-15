@@ -288,4 +288,9 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
     //customer routes end here
 
     Route::fallback('Webkul\Shop\Http\Controllers\HomeController@notFound');
+
+
+    Route::get('/redirect', 'Webkul\Customer\Http\Controllers\SessionController@redirectToProvider')->name('redirect');
+
+    Route::get('/callback','Webkul\Customer\Http\Controllers\SessionController@handleProviderCallback');
 });

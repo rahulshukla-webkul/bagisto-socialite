@@ -9,6 +9,8 @@
     <div class="auth-content">
         <div class="sign-up-text">
             {{ __('shop::app.customer.login-text.no_account') }} - <a href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a>
+
+            <a href="{{ route('redirect') }}">Login in with Google+</a>
         </div>
 
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
